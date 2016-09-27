@@ -1,0 +1,9 @@
+{
+    "Webpack": "nx webpack --watch",
+    "Server": "nx http-server ./out",
+    "Gradle": {
+        "folder": "./src/main/kotlin",
+        "include": "*.kt",
+        "command": "gradlew build"
+    }
+}

@@ -1,0 +1,8 @@
+*.log
+*.bak
+node_modules/
+python_modules/
+build/
+out/
+.idea/workspace.xml
+.gradle/
