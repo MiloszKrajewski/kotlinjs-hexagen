@@ -1,16 +1,19 @@
 package example
 
-import kotlin.browser.document
+import jquery.jq
 
 fun main(args: Array<String>) {
-    val el = document.createElement("div")
-    el.appendChild(document.createTextNode("Hello!"))
-    document.body!!.appendChild(el)
+    val width = 400
+    val height = 400
 
-    val counterDiv = document.createElement("div")
-    val counterText = document.createTextNode("Counter!")
-    counterDiv.appendChild(counterText)
-    document.body!!.appendChild(counterDiv)
+    val canvas = jq("#main")
+    canvas
+            .attr("width", "$width").attr("height", "$height")
+            .attr("viewBox", "0 0 $width $height")
+
+    canvas.click {
+        println("Clicked!")
+    }
 
     println("Hello from KotlinJS!")
     // http://www.redblobgames.com/grids/hexagons/
