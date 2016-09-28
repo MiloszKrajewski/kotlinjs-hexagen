@@ -1,21 +1,45 @@
 package example
 
-import jquery.jq
+import org.w3c.dom.CanvasRenderingContext2D
+import org.w3c.dom.HTMLCanvasElement
+import kotlin.browser.document
+import kotlin.dom.onClick
+
+fun drawCell(context: CanvasRenderingContext2D, x: Double, y: Double, r: Double) = {
+    val r12 = r*0.5
+    val r32 = r*Math.sqrt(3.0) / 2
+
+    context.fillStyle = "#fff"
+    context.beginPath()
+    context.moveTo(x + r, y)
+    context.lineTo(x + r12, y + r32)
+    context.lineTo(x - r12, y + r32)
+    context.lineTo(x - r, y)
+    context.lineTo(x - r12, y - r32)
+    context.lineTo(x + r12, y - r32)
+    context.closePath()
+    context.fill()
+}
 
 fun main(args: Array<String>) {
     val width = 400
     val height = 400
 
-    val canvas = jq("#main")
-    canvas
-            .attr("width", "$width").attr("height", "$height")
-            .attr("viewBox", "0 0 $width $height")
+    val canvas = document.getElementById("main") as HTMLCanvasElement
+    val context = canvas.getContext("2d") as CanvasRenderingContext2D
+    canvas.width = width
+    canvas.height = height
 
-    canvas.click {
-        println("Clicked!")
+    context.fillStyle = "#000"
+    context.fillRect(0.0, 0.0, width.toDouble(), height.toDouble())
+
+    canvas.onClick {
+        drawCell(context, 100.0, 100.0, 50.0)
+        println("Clicked111!")
     }
 
     println("Hello from KotlinJS!")
+}
     // http://www.redblobgames.com/grids/hexagons/
     // http://devmag.org.za/2013/08/31/geometry-with-hex-coordinates/
 
@@ -60,4 +84,3 @@ fun main(args: Array<String>) {
 //    hexagon(200+ox*4, 200, 50);
 //
 //    path(200, 200, 200+ox*2, 200+oy*2, 50)
-}
