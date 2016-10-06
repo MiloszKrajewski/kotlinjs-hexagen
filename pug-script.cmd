@@ -1,0 +1,1 @@
+@call nx pug %~dp0\src\html --out %~dp0\build\pug\html %* 

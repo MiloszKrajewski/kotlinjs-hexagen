@@ -4,10 +4,11 @@
   "description": "kotlinjs-hexagen",
   "main": "./src/index.js",
   "scripts": {
+    "pug": "pug-script -P",
     "gradle": "gradlew build",
     "webpack": "webpack",
-    "build": "gradlew build & webpack",
-    "release": "gradlew build & webpack -p",
+    "build": "pug-script -P & gradlew build & webpack",
+    "release": "pug-script & gradlew build & webpack -p",
     "serve": "http-server ./out"
   },
   "author": "Milosz Krajewski",
@@ -26,6 +27,7 @@
     "imports-loader": "^0.6.5",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
+    "pug-cli": "^1.0.0-alpha6",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",

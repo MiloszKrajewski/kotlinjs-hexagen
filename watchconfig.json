@@ -1,4 +1,5 @@
 {
+    "Pug": "pug-script -w -P",
     "Webpack": "nx webpack --watch",
     "Server": "nx http-server ./out",
     "Gradle": {

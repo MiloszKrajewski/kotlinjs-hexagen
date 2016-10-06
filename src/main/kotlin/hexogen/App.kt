@@ -7,9 +7,11 @@ import hexogen.model.Point
 import hexogen.model.Tile
 import hexogen.model.buildWorld
 import org.w3c.dom.CanvasRenderingContext2D
+import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLCanvasElement
 import kotlin.browser.document
 import kotlin.browser.window
+import kotlin.dom.onClick
 
 val TILE_R = 10.0
 val TILE_H = TILE_R * Math.sqrt(3.0) / 2
@@ -64,25 +66,41 @@ fun Door.paint(context: CanvasRenderingContext2D) {
 fun main(args: Array<String>) {
     val canvas = document.getElementById("main") as HTMLCanvasElement
     val context = canvas.getContext("2d") as CanvasRenderingContext2D
+    val button = document.getElementById("restart") as HTMLButtonElement
 
-    val size = worldSize(100, 50)
+    val size = worldSize(60, 40)
 
     canvas.width = size.x.toInt()
     canvas.height = size.y.toInt()
 
-    context.fillStyle = "#000"
-    context.fillRect(0.0, 0.0, size.x, size.y)
+    var handle: Int? = null
 
-    val algorithm = Kruskal(buildWorld(100, 50).shuffled())
+    fun clear() {
+        context.fillStyle = "#000"
+        context.fillRect(0.0, 0.0, size.x, size.y)
+    }
 
-    fun animate() {
+    fun animate(algorithm: Kruskal<Tile, Door>) {
         algorithm.next()?.apply {
             paint(context)
-            window.setTimeout({ animate() }, 0)
+            handle = window.setTimeout({ animate(algorithm) }, 0)
         }
     }
 
-    animate()
+    fun shutdown() {
+        if (handle != null) {
+            window.clearTimeout(handle ?: 0)
+            handle = null
+        }
+    }
+
+    clear()
+
+    button.onClick {
+        shutdown()
+        clear()
+        animate(Kruskal(buildWorld(60, 40).shuffled()))
+    }
 }
 
 // http://www.redblobgames.com/grids/hexagons/

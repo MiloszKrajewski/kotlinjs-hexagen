@@ -48,6 +48,7 @@ var cfg = {
             path.resolve('.'),
             path.resolve('./src/js'),
             path.resolve('./src/'),
+            path.resolve('./build/pug'),
             path.resolve('./build/kotlin-app'),
             path.resolve('./build/kotlin-lib'),
         ]
