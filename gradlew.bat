@@ -8,8 +8,12 @@
 @rem Set local scope for the variables with windows NT shell
 if "%OS%"=="Windows_NT" setlocal
 
+set PROXY_OPTS=
+set PROXY_OPTS=%PROXY_OPTS% -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=8888 
+set PROXY_OPTS=%PROXY_OPTS% -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=8888
+
 @rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
-set DEFAULT_JVM_OPTS=
+set DEFAULT_JVM_OPTS=%PROXY_OPTS%
 
 set DIRNAME=%~dp0
 if "%DIRNAME%" == "" set DIRNAME=.
