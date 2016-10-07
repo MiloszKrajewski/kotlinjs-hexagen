@@ -13,12 +13,15 @@ import kotlin.browser.document
 import kotlin.browser.window
 import kotlin.dom.onClick
 
-val TILE_R = 10.0
+val WORLD_WIDTH = 60
+val WORLD_HEIGHT = 40
+
+val TILE_R = 8.0
 val TILE_H = TILE_R * Math.sqrt(3.0) / 2
 val TILE_MARGIN = (TILE_R - TILE_H) * 2
 
 val TILE_COLOR = "#fff"
-val DOOR_COLOR = "#fff"
+val DOOR_COLOR = "#eee"
 
 fun Tile.center(): Point {
     val rx = x * TILE_H * 2 + TILE_R
@@ -68,7 +71,7 @@ fun main(args: Array<String>) {
     val context = canvas.getContext("2d") as CanvasRenderingContext2D
     val button = document.getElementById("restart") as HTMLButtonElement
 
-    val size = worldSize(60, 40)
+    val size = worldSize(WORLD_WIDTH, WORLD_HEIGHT)
 
     canvas.width = size.x.toInt()
     canvas.height = size.y.toInt()
@@ -99,9 +102,6 @@ fun main(args: Array<String>) {
     button.onClick {
         shutdown()
         clear()
-        animate(Kruskal(buildWorld(60, 40).shuffled()))
+        animate(Kruskal(buildWorld(WORLD_WIDTH, WORLD_HEIGHT).shuffled()))
     }
 }
-
-// http://www.redblobgames.com/grids/hexagons/
-// http://devmag.org.za/2013/08/31/geometry-with-hex-coordinates/
