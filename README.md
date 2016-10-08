@@ -1,6 +1,7 @@
 # Maze generation using Kruskal's algorithm with KotlinJS
 
 Read about it: http://red-green-rewrite.github.io/2016/10/06/Kruskal-Kotlin-and-Hex-Tiles/
+
 Online demo: http://red-green-rewrite.github.io/kotlinjs-hexagen/index.html
 
 Initialize:
