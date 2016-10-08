@@ -90,9 +90,13 @@ fun main(args: Array<String>) {
         }
     }
 
-    fun shutdown() {
+    fun launch() {
+        animate(Kruskal(buildWorld(WORLD_WIDTH, WORLD_HEIGHT).shuffled()))
+    }
+
+    fun cancel() {
         if (handle != null) {
-            window.clearTimeout(handle ?: 0)
+            window.clearTimeout(handle!!)
             handle = null
         }
     }
@@ -100,8 +104,8 @@ fun main(args: Array<String>) {
     clear()
 
     button.onClick {
-        shutdown()
+        cancel()
         clear()
-        animate(Kruskal(buildWorld(WORLD_WIDTH, WORLD_HEIGHT).shuffled()))
+        launch()
     }
 }
