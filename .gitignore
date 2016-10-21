@@ -2,6 +2,7 @@
 *.bak
 node_modules/
 python_modules/
+__pycache__/
 build/
 out/
 .idea/workspace.xml
