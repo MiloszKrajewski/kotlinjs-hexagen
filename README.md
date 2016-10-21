@@ -1,9 +1,13 @@
-# Template to start your KotlinJS application
+# Maze generation using Kruskal's algorithm with KotlinJS
 
-(because I have no time to learn how to build Yeoman generator)
+Read about it: http://red-green-rewrite.github.io/2016/10/06/Kruskal-Kotlin-and-Hex-Tiles/
+
+Online demo: http://red-green-rewrite.github.io/kotlinjs-hexagen/index.html
 
 Initialize:
 * ``__install.cmd`` (install node and python packages)
+* ``npm run build`` (build the project)
+* ``npm run serve`` (serve the output folder)
 
 Includes:
 * gradle (compiles Kotlin to JS)
@@ -24,13 +28,3 @@ Scripts:
 * ``npm run release`` (runs gradle and webpack in release mode once)
 * ``npm run serve`` (server output folder)
 * ``watch`` (runs webpack, http server and gradle in watch mode)
-
-Renaming (files that contain project name):
-* ``package.json``
-* ``settings.gradle``
-* ``src/html/index.html``
-
-Renaming (if you intend to use IntelliJ)
-* ``.idea/.name``
-* ``.idea/modules.xml``
-* ``template-kotlinjs-gradle-webpack.iml``
